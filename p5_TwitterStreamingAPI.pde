@@ -7,14 +7,12 @@ PFont font;
 // You need to add your Consumer Keys and Access Tokens from Twitter.
 // You must create an app at dev.twitter.com to receive them.
 
-// This is where you enter your Oauth info
 static String OAuthConsumerKey = "";
 static String OAuthConsumerSecret = "";
-// This is where you enter your Access Token info
 static String AccessToken = "";
 static String AccessTokenSecret = "";
 
-String keywords[] = { "#chinostest" };
+String keywords[] = { "#google" }; // what to look for.
 
 ///////////////////////////// End Variable Config ////////////////////////////
 
@@ -75,10 +73,13 @@ StatusListener listener = new StatusListener() {
   public void onScrubGeo(long userId, long upToStatusId) {
     System.out.println("Got scrub_geo event userId:" + userId + " upToStatusId:" + upToStatusId);
   }
-
+  public void onStallWarning(StallWarning warning) {
+    System.out.println("Got a stall warning:" + warning);
+  }
   public void onException(Exception ex) {
     ex.printStackTrace();
   }
+
 };
 
 /// my dirt test method for displaying tweets
